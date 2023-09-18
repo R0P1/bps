@@ -1,19 +1,19 @@
 import ccrypt
 
-fc = input("Masukkan nama file ccrypt: ")
-fw = input("Masukkan nama file wordlist: ")
+cf = input("Enter the ccrypt file name : ")
+wf = input("Enter the wordlist file name: ")
 
-with open(fw, 'r') as w:
-    for baris in w:
-        kata_sandi = baris.strip()  
+with open(wf, 'r') as w:
+    for line in w:
+        password = line.strip()  
       
         try:
-            ccrypt.decrypt(fc, kata_sandi)
-            print(f"Kata sandi ditemukan: {kata_sandi}")
+            ccrypt.decrypt(cf, password)
+            print(f"Password found: {password}")
             break
 
         except ccrypt.CCryptError:
             continue
 
     else:
-        print("Kata sandi tidak ditemukan dalam file wordlist.")
+        print("Password not found in wordlist file.")
